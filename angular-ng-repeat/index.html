@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Angular</title>
+        <style>
+        .red {
+          color: #b54040;
+        }
+        .blue {
+          color: #3e43c5;
+        }
+        </style>
+    </head>
+    <body ng-app="myapp">
+
+        <div ng-controller="itemsCtrl" >
+            <h2>Super Sweet List of Stuff</h2>
+            <ul>
+              <li ng-repeat="item in items" ng-class="item.class">{{item.title}} - {{item.value}}</li>
+            </ul>
+            
+        </div>
+
+        <!-- Angular.js CDN -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
+
+        <!-- Init JS -->
+        <script>
+          var app = angular.module("myapp", []);
+
+          // Model Generator
+          app.factory( 'dataService', function (){
+            var get = function(){
+              return [
+                {
+                  title: "Item One",
+                  value: "a Val",
+                  class: "blue"
+                },{
+                  title: "Item Two",
+                  value: "another Val",
+                  class: "red"
+                },{
+                  title: "Item Three",
+                  value: "a better Val",
+                  class: "red"
+                },{
+                  title: "Item Four",
+                  value: "the best Val",
+                  class: "blue"
+                }
+              ]
+            };
+
+            return {
+              get: get
+            };
+
+          });
+
+          // Controller
+          app.controller('itemsCtrl',['$scope', 'dataService', function($scope, dataService){
+            $scope.items = dataService.get();
+          }]);
+        </script>
+    </body>
+</html>

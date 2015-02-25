@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Angular</title>
+    </head>
+    <body ng-app="myapp">
+
+        <div ng-controller="helloCtrl" >
+            <input type="text" name="name" value="" ng-model="title">
+            <h2>Hello {{title}} !</h2>
+        </div>
+
+        <!-- Angular.js CDN -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
+
+        <!-- Init JS -->
+        <script>
+          angular.module("myapp", [])
+          .controller('helloCtrl',['$scope', function($scope){
+            $scope.title = "World";
+          }]);
+        </script>
+    </body>
+</html>
