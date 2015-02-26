@@ -18,7 +18,7 @@
             <ul>
               <li ng-repeat="item in items" ng-class="item.class">{{item.title}} - {{item.value}}</li>
             </ul>
-            
+
         </div>
 
         <!-- Angular.js CDN -->
@@ -29,7 +29,7 @@
           var app = angular.module("myapp", []);
 
           // Model Generator
-          app.factory( 'dataService', function (){
+          app.factory( 'DataService', function (){
             var get = function(){
               return [
                 {
@@ -59,8 +59,8 @@
           });
 
           // Controller
-          app.controller('itemsCtrl',['$scope', 'dataService', function($scope, dataService){
-            $scope.items = dataService.get();
+          app.controller('itemsCtrl',['$scope', 'DataService', function($scope, DataService){
+            $scope.items = DataService.get();
           }]);
         </script>
     </body>
